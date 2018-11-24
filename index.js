@@ -136,15 +136,8 @@ ${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
     }
     return msg.channel.send('There is nothing playing.');
   } else if (command === 'looping') {
-    looping ? false : true
-    if(looping = true){
-      msg.channel.send("Looping is now enabled")
-      serverQueue
-     } else {
-        msg.channel.send("Looping is now disabled")
-      }
-    }
-
+    looping = false ? false : true
+  }
   return undefined;
 });
 
