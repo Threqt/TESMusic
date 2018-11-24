@@ -37,6 +37,7 @@ client.on('message', async msg => { // eslint-disable-line
   const searchString = args.slice(1).join(' ');
   const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
   const serverQueue = queue.get(msg.guild.id);
+  let looping = false;
 
   let command = msg.content.toLowerCase().split(' ')[0];
   command = command.slice(PREFIX.length)
@@ -134,6 +135,14 @@ ${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
       return msg.channel.send('▶ Resumed the music for you!');
     }
     return msg.channel.send('There is nothing playing.');
+  } else if (command === 'looping') {
+    looping ? false : true
+    if(looping = true){
+      message.channel.send("Looping is now enabled")
+      else {
+        message.channel.send("Looping is now disabled")
+      }
+    }
   }
 
   return undefined;
@@ -154,7 +163,6 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
       connection: null,
       songs: [],
       volume: 5,
-      playing: true
     };
     queue.set(msg.guild.id, queueConstruct);
 
