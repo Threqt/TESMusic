@@ -138,12 +138,12 @@ ${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
   } else if (command === 'looping') {
     looping ? false : true
     if(looping = true){
-      message.channel.send("Looping is now enabled")
-      else {
-        message.channel.send("Looping is now disabled")
+      msg.channel.send("Looping is now enabled")
+      serverQueue
+     } else {
+        msg.channel.send("Looping is now disabled")
       }
     }
-  }
 
   return undefined;
 });
@@ -211,4 +211,4 @@ function play(guild, song) {
 
 
 
-client.login(proccess.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
